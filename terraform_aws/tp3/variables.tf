@@ -4,17 +4,17 @@ variable "myinstance" {
 }
 
 variable "mytag" {
-  type    = "map"
+  type = "map"
 }
 
 variable "my_secret_key" {
-  type    = "string"
+  type = "string"
 }
 
 variable "my_acces_key" {
-  type    = "string"
+  type = "string"
 }
 
 variable "my_region" {
-  type    = "string"
+  type = "string"
 }

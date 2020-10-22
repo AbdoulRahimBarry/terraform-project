@@ -6,7 +6,7 @@ provider "aws" {
 
 data "aws_ami" "mydata" {
   most_recent = true
-  owners = ["amazon"]
+  owners      = ["amazon"]
 
   filter {
     name   = "name"
@@ -18,15 +18,15 @@ data "aws_ami" "mydata" {
 resource "aws_instance" "myec2" {
   ami           = data.aws_ami.mydata.id
   instance_type = "${var.myinstance}"
-  key_name = "devops-abdoul"
+  key_name      = "devops-abdoul"
 
   security_groups = ["${aws_security_group.allow_traffic.name}"]
 
   tags = var.mytag
-  
+
   root_block_device {
     delete_on_termination = true
- }
+  }
 }
 
 resource "aws_eip" "lb" {
@@ -52,7 +52,7 @@ resource "aws_security_group" "allow_traffic" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-  }  
+  }
 
   egress {
     from_port   = 0
