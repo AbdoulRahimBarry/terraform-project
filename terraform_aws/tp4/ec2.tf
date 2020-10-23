@@ -28,10 +28,6 @@ resource "aws_instance" "myec2" {
     delete_on_termination = true
   }
 
-  provisioner "local-exec" {
-    command = "echo Public ${aws_instance.myec2.public_ip}; ID ${aws_instance.myec2.id}; Availability ${aws_instance.myec2.availability_zone}; >> infos_ec2.txt"
-  }
-
   provisioner "remote-exec" {
     inline = [
       "sudo amazon-linux-extras install -y nginx1.12",
@@ -87,4 +83,9 @@ resource "aws_security_group" "allow_traffic" {
 resource "aws_eip" "lb" {
   instance = aws_instance.myec2.id
   vpc      = true
+
+  provisioner "local-exec" {
+    command = "echo PUBLIC IP: ${aws_eip.lb.public_ip}; ID: ${aws_instance.myec2.id}; AVAILIBLE_ZONE: ${aws_instance.myec2.availability_zone}; >> infos_ec2.txt"
+  }
+
 }
