@@ -1,7 +1,7 @@
 provider "aws" {
   region     = "us-east-1"
-  access_key = "AKIAYKZPEKKQOA54FXXR"
-  secret_key = "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"
+  access_key = ""
+  secret_key = "T9+/sv4"
 }
 
 terraform {
@@ -9,8 +9,8 @@ terraform {
     bucket = "terraform-backend-abdoul"
     key    = "dev.tfstate"
     region = "us-east-1"
-    access_key = "AKIAYKZPEKKQOA54FXXR"
-    secret_key = "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"
+    access_key = ""
+    secret_key = ""
   }
 }
 
