@@ -40,3 +40,21 @@ resource "kubernetes_namespace" "monitoring" {
     name = "monitoring"
   }
 }
+
+
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: grafana
+#   namespace: monitoring
+# spec:
+#   entryPoints:
+#     - websecure
+#   routes:
+#     - kind: Rule
+#       match: Host(`grafana.demo.telemaque.fr`)
+#       services:
+#         - name: grafana-helm
+#           port: 80
+#   tls:
+#     certResolver: myresolver
